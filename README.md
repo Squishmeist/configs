@@ -191,3 +191,42 @@ go install github.com/oapi-codegen/oapi-codegen/v2/cmd/oapi-codegen@latest
 ```bash
 go install github.com/sqlc-dev/sqlc/cmd/sqlc@latest
 ```
+
+---
+
+## Node Tooling
+
+### Install Node and npm
+
+Install [Node.js](https://nodejs.org/en/download) using Node Version Manager (nvm) to easily manage Node versions.
+
+```bash
+# Download and install nvm:
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.4/install.sh | bash
+
+# in lieu of restarting the shell
+\. "$HOME/.nvm/nvm.sh"
+
+# Download and install Node.js:
+nvm install 24
+
+# Verify the Node.js version:
+node -v # Should print "v24.14.0".
+
+# Verify npm version:
+npm -v # Should print "11.9.0".
+```
+
+Install the required generators used for [Connect RPC](https://connectrpc.com/) code generation. These tools generate type-safe RPC clients from protobuf definitions.
+
+Generates modern TypeScript/JavaScript protobuf code.
+
+```bash
+npm install -g @bufbuild/protoc-gen-es
+```
+
+Generates React Query integrations for Connect RPC APIs.
+
+```
+npm install -g @connectrpc/protoc-gen-connect-query
+```
