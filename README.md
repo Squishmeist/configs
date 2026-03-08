@@ -1,35 +1,128 @@
 # Development Environment Configuration
 
-This repository contains my personal development environment configuration files for macOS.
+This repository contains the configuration files for my personal development environment, including terminal tooling, editor setup, and language tooling.
+
+---
+
+## Package Manager
+
+### Homebrew
+
+[Homebrew](https://brew.sh/) is used to install and manage system packages.
+
+```bash
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+```
+
+---
+
+## IDE
+
+- [Visual Studio Code](https://code.visualstudio.com/download)
+
+- **[Neovim](https://neovim.io/doc/install/)** — modern Vim-based editor with an extensive plugin ecosystem
+
+```bash
+brew install neovim
+```
+
+---
 
 ## 🖥️ Terminal Setup
 
-### Terminal Emulator
+### Ghostty
 
-- **Ghostty** - Modern, fast terminal emulator
+[Ghostty](https://ghostty.org/docs/install/binary) — GPU-accelerated terminal emulator.
+
+```bash
+brew install --cask ghostty
+```
+
+---
 
 ### Shell Configuration
 
-- **Zsh** with Oh My Zsh framework
-- **Starship** - Cross-shell prompt with beautiful customization
+- **[Zsh](https://ohmyz.sh/)** with the **Oh My Zsh** framework
+  ```bash
+  sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+  ```
+- **[Starship](https://starship.rs/)** — fast, customizable cross-shell prompt
+    ```bash
+    brew install starshibrew install starshipp
+    ```
+    Add to `.zshrc`
+    ```bash
+    eval "$(starship init zsh)"
+    ```
+- **[Tmux](https://github.com/tmux/tmux)** — terminal multiplexer configured with the Catppuccin theme
+  ```bash
+  brew install tmux
+  ```
 
-### Core Tools
-
-- **Neovim** - Modern Vim-based editor with extensive plugin ecosystem
-- **Tmux** - Terminal multiplexer with Catppuccin theme
-
-## 📁 Configuration Structure
+### 📁 Structure
 
 ```
 configs/
-├── README.md           # This file
-├── nvim/              # Neovim configuration
-│   ├── init.lua       # Main config entry point
+├── README.md              # Project documentation
+├── nvim/                  # Neovim configuration
+│   ├── init.lua           # Main configuration entry point
 │   └── lua/
-│       ├── plugins.lua # Plugin management with lazy.nvim
-│       ├── remap.lua   # Custom key mappings
-│       └── set.lua     # Vim settings and options
-└── tmux/              # Tmux configuration
-    ├── tmux.conf      # Main tmux config with Catppuccin theme
-    └── sessioniser    # Smart session management script
+│       ├── plugins.lua    # Plugin management (lazy.nvim)
+│       ├── remap.lua      # Custom key mappings
+│       └── set.lua        # Editor settings and options
+└── tmux/                  # Tmux configuration
+    ├── tmux.conf          # Tmux config with Catppuccin theme
+    └── sessioniser        # Smart session management script
+```
+
+---
+
+## Go Tooling
+
+### Install Go
+
+[Go](https://go.dev/doc/install)
+
+```bash
+brew install go
+```
+
+---
+
+## Protocol Buffers
+
+[Protocol Buffers](https://protobuf.dev/) are used to generate type-safe RPC APIs.
+
+### Install the compiler
+
+```bash
+brew install protobuf
+```
+
+### Install Go plugins
+
+```bash
+go install google.golang.org/protobuf/cmd/protoc-gen-go@latest
+go install google.golang.org/grpc/cmd/protoc-gen-go-grpc@latest
+go install connectrpc.com/connect/cmd/protoc-gen-connect-go@latest
+```
+
+---
+
+## OpenAPI Code Generation
+
+[oapi-codegen](https://github.com/oapi-codegen/oapi-codegen) generates type-safe REST API clients and servers from OpenAPI specifications.
+
+```bash
+go install github.com/oapi-codegen/oapi-codegen/v2/cmd/oapi-codegen@latest
+```
+
+---
+
+## SQL Code Generation
+
+[SQLC](https://sqlc.dev/) generates type-safe Go code from SQL queries.
+
+```bash
+go install github.com/sqlc-dev/sqlc/cmd/sqlc@latest
 ```
