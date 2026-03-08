@@ -40,40 +40,105 @@ brew install --cask ghostty
 
 ---
 
-### Shell Configuration
+## Shell Configuration
 
-- **[Zsh](https://ohmyz.sh/)** with the **Oh My Zsh** framework
-  ```bash
-  sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-  ```
-- **[Starship](https://starship.rs/)** — fast, customizable cross-shell prompt
-    ```bash
-    brew install starshibrew install starshipp
-    ```
-    Add to `.zshrc`
-    ```bash
-    eval "$(starship init zsh)"
-    ```
-- **[Tmux](https://github.com/tmux/tmux)** — terminal multiplexer configured with the Catppuccin theme
-  ```bash
-  brew install tmux
-  ```
+### Zsh + Oh My Zsh
 
-### 📁 Structure
+Install **[Zsh](https://ohmyz.sh/)** with the **Oh My Zsh** framework for improved defaults, plugins, and themes.
 
+```bash
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 ```
-configs/
-├── README.md              # Project documentation
-├── nvim/                  # Neovim configuration
-│   ├── init.lua           # Main configuration entry point
-│   └── lua/
-│       ├── plugins.lua    # Plugin management (lazy.nvim)
-│       ├── remap.lua      # Custom key mappings
-│       └── set.lua        # Editor settings and options
-└── tmux/                  # Tmux configuration
-    ├── tmux.conf          # Tmux config with Catppuccin theme
-    └── sessioniser        # Smart session management script
+
+### Starship Prompt
+
+Install **[Starship](https://starship.rs/)** — fast, customizable cross-shell prompt
+
+```bash
+brew install starship
 ```
+
+Add the following to your .zshrc:
+
+```bash
+eval "$(starship init zsh)"
+```
+
+Reload your shell:
+
+```bash
+source ~/.zshrc
+```
+
+### Tmux
+
+Install **[tmux](https://github.com/tmux/tmux)**, a terminal multiplexer for persistent sessions and improved terminal workflows.
+
+```bash
+brew install tmux
+```
+
+Install TPM (Tmux Plugin Manager):
+
+```bash
+git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm.
+```
+
+Install fzf for fuzzy searching (used by the sessioniser script):
+
+```bash
+brew install fzf
+```
+
+#### Configuration
+
+Create the tmux configuration file:
+
+```bash
+touch ~/.tmux.conf
+```
+
+Copy the contents of the provided .tmux.conf into this file.
+Reload the configuration:
+
+```bash
+tmux source-file ~/.tmux.conf
+```
+
+Install plugins after launching tmux:
+
+```bash
+Prefix + I
+```
+
+#### Sessioniser
+
+The sessioniser script allows quick switching between project directories using fzf, automatically creating a tmux session if one does not already exist.
+
+```bash
+touch ~/.tmux/sessioniser
+```
+
+Paste the provided sessioniser script into this file.
+Make it executable:
+
+```bash
+chmod +x ~/.tmux/sessioniser
+```
+
+Reload tmux:
+
+```bash
+tmux source-file ~/.tmux.conf
+```
+
+Inside tmux, press:
+
+```bash
+Prefix + f
+```
+
+to open the project selector popup.
 
 ---
 
